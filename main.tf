@@ -10,7 +10,7 @@ data "aws_ami" "tinfoil" {
     most_recent = true
     filter {
         name   = "name"
-        values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server-*"]
+        values = ["ubuntu/images/hvm-ssd/ubuntu-xenial-16.04-amd64-server-*"]
     }
     filter {
         name   = "virtualization-type"
@@ -23,7 +23,7 @@ resource "aws_instance" "tinfoil" {
     ami                     = "${data.aws_ami.tinfoil.id}"
     instance_type           = "t2.micro"
     key_name                = "tinfoil-key"
-    subnet_id               = "subnet-0dae8a8faf6253e62"
+    subnet_id               = "subnet-02beca82af6553e64"
     count                   =  4
     tags = {
         Resource = "Compute"
